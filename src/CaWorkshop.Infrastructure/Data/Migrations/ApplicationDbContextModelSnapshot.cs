@@ -112,7 +112,7 @@ namespace CaWorkshop.Infrastructure.Data.Migrations
 
                     b.HasIndex("ListId");
 
-                    b.ToTable("TodoItems");
+                    b.ToTable("TodoItems", (string)null);
                 });
 
             modelBuilder.Entity("CaWorkshop.WebUI.Models.TodoList", b =>
@@ -131,7 +131,7 @@ namespace CaWorkshop.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TodoLists");
+                    b.ToTable("TodoLists", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.DeviceFlowCodes", b =>

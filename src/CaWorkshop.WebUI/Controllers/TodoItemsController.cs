@@ -1,98 +1,43 @@
-using CaWorkshop.Domain.Entities;
+using CaWorkshop.Application.TodoItems.Commands.CreateTodoItem;
+using CaWorkshop.Application.TodoItems.Commands.DeleteTodoItem;
+using CaWorkshop.Application.TodoItems.Commands.UpdateTodoItem;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using CaWorkshop.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
 
-namespace CaWorkshop.Infrastructure.Controllers
+namespace CaWorkshop.WebUI.Controllers;
+
+public class TodoItemsController : ApiControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class TodoItemsController : ControllerBase
+    // PUT: api/TodoItems/5
+    [HttpPut("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesDefaultResponseType]
+    public async Task<IActionResult> PutTodoItem(int id, UpdateTodoItemCommand command)
     {
-        private readonly ApplicationDbContext _context;
+        if (id != command.Id) return BadRequest();
 
-        public TodoItemsController(ApplicationDbContext context)
-        {
-            _context = context;
-        }
+        await Mediator.Send(command);
 
-        // PUT: api/TodoItems/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesDefaultResponseType]
-        public async Task<IActionResult> PutTodoItem(int id, TodoItem todoItem)
-        {
-            if (id != todoItem.Id)
-            {
-                return BadRequest();
-            }
+        return NoContent();
+    }
 
-            _context.Entry(todoItem).State = EntityState.Modified;
+    // POST: api/TodoItems
+    [HttpPost]
+    public async Task<ActionResult<int>> PostTodoItem(CreateTodoItemCommand command)
+    {
+        return await Mediator.Send(command);
+    }
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!TodoItemExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+    // DELETE: api/TodoItems/5
+    [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesDefaultResponseType]
+    public async Task<IActionResult> DeleteTodoItem(int id)
+    {
+        await Mediator.Send(new DeleteTodoItemCommand(id));
 
-            return NoContent();
-        }
-
-        // POST: api/TodoItems
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<int>> PostTodoItem(TodoItem todoItem)
-        {
-          if (_context.TodoItems == null)
-          {
-              return Problem("Entity set 'ApplicationDbContext.TodoItems'  is null.");
-          }
-            _context.TodoItems.Add(todoItem);
-            await _context.SaveChangesAsync();
-
-            return todoItem.Id;
-        }
-
-        // DELETE: api/TodoItems/5
-        [HttpDelete("{id}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesDefaultResponseType]
-        public async Task<IActionResult> DeleteTodoItem(int id)
-        {
-            if (_context.TodoItems == null)
-            {
-                return NotFound();
-            }
-            var todoItem = await _context.TodoItems.FindAsync(id);
-            if (todoItem == null)
-            {
-                return NotFound();
-            }
-
-            _context.TodoItems.Remove(todoItem);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool TodoItemExists(int id)
-        {
-            return (_context.TodoItems?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
+        return NoContent();
     }
 }
