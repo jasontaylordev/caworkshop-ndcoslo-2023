@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D402966B-F0A9-4FD1-AE48-946BD2F82127}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaWorkshop.WebUI", "src\CaWorkshop.WebUI\CaWorkshop.WebUI.csproj", "{5D10D10A-281C-454B-939F-564AD62E713D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B061F130-5041-4ADD-A164-6A9F56C7E0E0}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D10D10A-281C-454B-939F-564AD62E713D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D10D10A-281C-454B-939F-564AD62E713D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D10D10A-281C-454B-939F-564AD62E713D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D10D10A-281C-454B-939F-564AD62E713D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5D10D10A-281C-454B-939F-564AD62E713D} = {D402966B-F0A9-4FD1-AE48-946BD2F82127}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {316C25EB-AF01-41C5-B837-0118CA9A1535}
+	EndGlobalSection
+EndGlobal
