@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CaWorkshop.WebUI.Controllers;
+namespace CaWorkshop.Infrastructure.Controllers;
 
 [Authorize]
 [ApiController]

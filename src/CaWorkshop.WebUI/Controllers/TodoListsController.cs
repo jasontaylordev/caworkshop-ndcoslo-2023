@@ -1,9 +1,9 @@
-using CaWorkshop.WebUI.Data;
-using CaWorkshop.WebUI.Models;
+using CaWorkshop.Domain.Entities;
+using CaWorkshop.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
-namespace CaWorkshop.WebUI.Controllers;
+namespace CaWorkshop.Infrastructure.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]

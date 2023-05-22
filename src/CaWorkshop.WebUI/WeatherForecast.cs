@@ -1,4 +1,4 @@
-namespace CaWorkshop.WebUI;
+namespace CaWorkshop.Infrastructure;
 
 public class WeatherForecast
 {

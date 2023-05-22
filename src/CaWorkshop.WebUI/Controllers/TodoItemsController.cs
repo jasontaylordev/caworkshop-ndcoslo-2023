@@ -1,8 +1,10 @@
-using CaWorkshop.WebUI.Data;
-using CaWorkshop.WebUI.Models;
+using CaWorkshop.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using CaWorkshop.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
-namespace CaWorkshop.WebUI.Controllers
+namespace CaWorkshop.Infrastructure.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -18,6 +20,10 @@ namespace CaWorkshop.WebUI.Controllers
         // PUT: api/TodoItems/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
         public async Task<IActionResult> PutTodoItem(int id, TodoItem todoItem)
         {
             if (id != todoItem.Id)
@@ -63,6 +69,9 @@ namespace CaWorkshop.WebUI.Controllers
 
         // DELETE: api/TodoItems/5
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
         public async Task<IActionResult> DeleteTodoItem(int id)
         {
             if (_context.TodoItems == null)
