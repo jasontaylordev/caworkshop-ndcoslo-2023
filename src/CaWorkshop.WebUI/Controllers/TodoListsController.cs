@@ -1,6 +1,7 @@
 using CaWorkshop.WebUI.Data;
 using CaWorkshop.WebUI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace CaWorkshop.WebUI.Controllers;
 
@@ -39,6 +40,10 @@ public class TodoListsController : ControllerBase
     // PUT: api/TodoLists/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPut("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesDefaultResponseType]
     public async Task<IActionResult> PutTodoList(int id, TodoList todoList)
     {
         if (id != todoList.Id)
@@ -81,6 +86,9 @@ public class TodoListsController : ControllerBase
 
     // DELETE: api/TodoLists/5
     [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesDefaultResponseType]
     public async Task<IActionResult> DeleteTodoList(int id)
     {
         var todoList = await _context.TodoLists.FindAsync(id);
