@@ -1,5 +1,6 @@
 ﻿using CaWorkshop.Application.Common.Interfaces;
 using CaWorkshop.Infrastructure.Data;
+using CaWorkshop.Infrastructure.Data.Interceptors;
 using CaWorkshop.Infrastructure.Identity;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +24,8 @@ public static class ConfigureServices
             sp.GetRequiredService<ApplicationDbContext>());
 
         services.AddScoped<ApplicationDbContextInitialiser>();
+
+        services.AddScoped<AuditableEntitySaveChangesInterceptor>();
 
         services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
             .AddEntityFrameworkStores<ApplicationDbContext>();

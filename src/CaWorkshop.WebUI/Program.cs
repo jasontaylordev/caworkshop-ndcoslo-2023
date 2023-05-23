@@ -1,6 +1,10 @@
 using CaWorkshop.Application;
 using CaWorkshop.Infrastructure;
 using CaWorkshop.Infrastructure.Data;
+using NSwag.Generation.Processors.Security;
+using NSwag;
+using CaWorkshop.Application.Common.Interfaces;
+using CaWorkshop.WebUI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,10 +16,25 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
+builder.Services.AddScoped<ICurrentUser, CurrentUserService>();
+
 builder.Services.AddOpenApiDocument(configure =>
 {
     configure.Title = "CaWorkshop API";
+    configure.AddSecurity("JWT", Enumerable.Empty<string>(),
+        new OpenApiSecurityScheme
+        {
+            Type = OpenApiSecuritySchemeType.ApiKey,
+            Name = "Authorization",
+            In = OpenApiSecurityApiKeyLocation.Header,
+            Description = "Type into the textbox: Bearer {your JWT token}."
+        });
+
+    configure.OperationProcessors.Add(
+        new AspNetCoreOperationSecurityScopeProcessor("JWT"));
 });
+
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 

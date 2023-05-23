@@ -15,10 +15,12 @@ public class CreateTodoItemCommandHandler
         : IRequestHandler<CreateTodoItemCommand, int>
 {
     private readonly IApplicationDbContext _context;
+    private readonly ICurrentUser _user;
 
-    public CreateTodoItemCommandHandler(IApplicationDbContext context)
+    public CreateTodoItemCommandHandler(IApplicationDbContext context, ICurrentUser user)
     {
         _context = context;
+        _user = user;
     }
 
     public async Task<int> Handle(CreateTodoItemCommand request,
