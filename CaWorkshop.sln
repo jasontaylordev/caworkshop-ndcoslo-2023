@@ -12,11 +12,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaWorkshop.Domain", "src\CaWorkshop.Domain\CaWorkshop.Domain.csproj", "{F8BCECBC-36E9-40B1-BE33-B3CB6BFE34D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaWorkshop.Domain", "src\CaWorkshop.Domain\CaWorkshop.Domain.csproj", "{F8BCECBC-36E9-40B1-BE33-B3CB6BFE34D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaWorkshop.Application", "src\CaWorkshop.Application\CaWorkshop.Application.csproj", "{BD493C33-3152-4A5C-ABAE-AECAD34E9114}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaWorkshop.Application", "src\CaWorkshop.Application\CaWorkshop.Application.csproj", "{BD493C33-3152-4A5C-ABAE-AECAD34E9114}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaWorkshop.Infrastructure", "src\CaWorkshop.Infrastructure\CaWorkshop.Infrastructure.csproj", "{9817F339-9D41-4A80-BF66-3C9D427CC936}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaWorkshop.Infrastructure", "src\CaWorkshop.Infrastructure\CaWorkshop.Infrastructure.csproj", "{9817F339-9D41-4A80-BF66-3C9D427CC936}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{80263FA7-BA0A-4C19-9238-31621321BDDF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaWorkshop.Application.UnitTests", "tests\CaWorkshop.Application.UnitTests\CaWorkshop.Application.UnitTests.csproj", "{75C67873-FB90-4744-AD00-98F69BCC8ACE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +44,10 @@ Global
 		{9817F339-9D41-4A80-BF66-3C9D427CC936}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9817F339-9D41-4A80-BF66-3C9D427CC936}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9817F339-9D41-4A80-BF66-3C9D427CC936}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75C67873-FB90-4744-AD00-98F69BCC8ACE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75C67873-FB90-4744-AD00-98F69BCC8ACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75C67873-FB90-4744-AD00-98F69BCC8ACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75C67873-FB90-4744-AD00-98F69BCC8ACE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +57,7 @@ Global
 		{F8BCECBC-36E9-40B1-BE33-B3CB6BFE34D5} = {D402966B-F0A9-4FD1-AE48-946BD2F82127}
 		{BD493C33-3152-4A5C-ABAE-AECAD34E9114} = {D402966B-F0A9-4FD1-AE48-946BD2F82127}
 		{9817F339-9D41-4A80-BF66-3C9D427CC936} = {D402966B-F0A9-4FD1-AE48-946BD2F82127}
+		{75C67873-FB90-4744-AD00-98F69BCC8ACE} = {80263FA7-BA0A-4C19-9238-31621321BDDF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {316C25EB-AF01-41C5-B837-0118CA9A1535}
