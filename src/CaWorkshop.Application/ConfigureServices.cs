@@ -12,9 +12,10 @@ public static class ConfigureServices
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-        services.AddMediatR(config => 
+        services.AddMediatR(config =>
             config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly())
-                  .AddOpenBehavior(typeof(ValidationBehaviour<,>)));
+                    .AddOpenBehavior(typeof(UnhandledExceptionBehaviour<,>))
+                    .AddOpenBehavior(typeof(ValidationBehaviour<,>)));
 
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 

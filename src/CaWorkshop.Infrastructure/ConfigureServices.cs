@@ -36,6 +36,8 @@ public static class ConfigureServices
         services.AddAuthentication()
             .AddIdentityServerJwt();
 
+        services.AddScoped<IIdentityService, IdentityService>();
+
         return services;
     }
 }
